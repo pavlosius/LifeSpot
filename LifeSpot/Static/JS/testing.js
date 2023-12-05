@@ -1,30 +1,8 @@
 ﻿
-
 // Получим коллекцию всех элементов страницы
 //let elements = document.getElementsByTagName('*');
 // Выведем результат в уведомление
 //alert(`Количество элементов на странице:  ${elements.length}`);
-
-/*Код ниже отрабатывает каждый раз при вводе символа в input*/
-function filterContent() {
-    // Сохраняем текст пользовательского запроса
-    //let inputString = document.getElementsByTagName('input')[0].value.toLowerCase();
-
-    // Находим контейнеры с видео, которые необходимо фильтровать
-    let elements = document.getElementsByClassName('video-container');
-    // Пробегаемся по контейнерам
-    for (let i = 0; i <= elements.length; i++) {
-        // Вытаскиваем текст описания видео, которое необходимо отфильтровать
-        let videoText = elements[i].querySelector(".video-title").innerText;
-        // Выполняем фильтрацию, сравнивая значения в нижнем регистре
-        if (!videoText.toLowerCase().includes(inputParseFunction().toLowerCase())) {
-             elements[i].style.display = 'none';
-        } else {
-            elements[i].style.display = 'inline-block';
-        }
-    }
-}
-
 
 /*
 * Функция для проверки и сохранения  данных пользователя
@@ -80,4 +58,20 @@ let sessionLog = function logSession() {
     for (let result of session) {
         console.log(result)
     }
+}
+
+/*
+* Обработчик клика
+*
+* */
+const saveInput = function () {
+    // Вытащим значение текстового поля
+    let currentInput = document.getElementsByTagName('input')[0].value.toLowerCase();
+
+    // Покажем окно с прошлым и новым значением
+    alert('Последний ввод: ' + this.lastInput /* равноценно window.lastInput, так как мы работаем в контексте браузера */
+        + '\n' + 'Текущий ввод: ' + currentInput);
+
+    // Сохраним новое значение в контекст
+    this.lastInput = currentInput;
 }
