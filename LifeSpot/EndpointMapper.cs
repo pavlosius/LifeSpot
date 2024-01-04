@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using System.Text;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Hosting;
 
 namespace LifeSpot
 {
@@ -89,6 +91,15 @@ namespace LifeSpot
                     .Replace("<!--SLIDER-->", sliderHtml);
 
                 await context.Response.WriteAsync(html.ToString());
+            });
+        }
+
+        public static void MapImages(IApplicationBuilder app,IWebHostEnvironment env)
+        {
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Static", "Images")),
+                RequestPath = "/Static/Images"
             });
         }
     }
