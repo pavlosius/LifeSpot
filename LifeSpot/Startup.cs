@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 
 namespace LifeSpot
@@ -33,6 +34,12 @@ namespace LifeSpot
                 endpoints.MapCss();
                 endpoints.MapJs();
                 endpoints.MapHtml();
+            });
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath,"Static", "Images")),
+                RequestPath = "/Static/Images"
             });
         }
     }
