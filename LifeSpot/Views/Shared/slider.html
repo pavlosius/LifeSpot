@@ -1,13 +1,14 @@
-﻿<div id="slider-container">
-    <img src="../../Static/Images/london.jpg" width=100% alt="">
-    <img src="../../Static/Images/ny.jpg" width=100% alt="">
-    <img src="../../Static/Images/spb.jpg" width=100% alt="">
-    <a class="previous" onclick="">PREV</a>
-    <a class="next" onclick="">NEXT</a>
-    <br>
-    <div class="slider-dots">
-        <span class="dot" onclick=""></span>
-        <span class="dot" onclick=""></span>
-        <span class="dot" onclick=""></span>
+﻿<div class="slider">
+    <div class="images">
+        <img style="left:-100px" src="../../Static/Images/london.jpg" alt="">
+        <img src="../../Static/Images/ny.jpg" alt="">
+        <img src="../../Static/Images/spb.jpg" alt="">
+    </div>
+    <a class="previous" onclick="changeSlide(-1)">PREV</a>
+    <a class="next" onclick="changeSlide(1)">NEXT</a>
+    <div class="buttons">
+        <span class="button" onclick="chooseSlide(1)"></span>
+        <span class="button" onclick="chooseSlide(2)"></span>
+        <span class="button" onclick="chooseSlide(3)"></span>
     </div>
 </div>
